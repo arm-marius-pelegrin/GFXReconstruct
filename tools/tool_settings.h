@@ -719,7 +719,7 @@ static bool GetQuitAfterFrame(const gfxrecon::util::ArgumentParser& arg_parser, 
     return false;
 }
 
-static bool
+static void
 GetMeasurementFrameRange(const gfxrecon::util::ArgumentParser& arg_parser, uint32_t& start_frame, uint32_t& end_frame)
 {
     start_frame = 1;
@@ -765,17 +765,12 @@ GetMeasurementFrameRange(const gfxrecon::util::ArgumentParser& arg_parser, uint3
                 GFXRECON_LOG_WARNING("Ignoring invalid measurement frame range \"%s\", where first frame is "
                                      "greater than or equal to the last frame",
                                      value.c_str());
-
-                return false;
             }
 
             start_frame = start_frame_arg;
             end_frame   = end_frame_arg;
-            return true;
         }
     }
-
-    return false;
 }
 static gfxrecon::decode::CreateResourceAllocator
 GetCreateResourceAllocatorFunc(const gfxrecon::util::ArgumentParser&           arg_parser,
